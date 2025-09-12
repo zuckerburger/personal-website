@@ -11,7 +11,7 @@
         <div class="amp-body">
             <div class="knob-row">
                 <div class="knob-container">
-                    <div class="knob">
+                    <div class="knob" onclick="rotateKnob(this, 1)">
                         <div class="knob-indicator"></div>
                     </div>
                     <div class="knob-label">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="knob-container">
-                    <div class="knob">
+                    <div class="knob" onclick="rotateKnob(this, 2)">
                         <div class="knob-indicator"></div>
                     </div>
                     <div class="knob-label">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="knob-container">
-                    <div class="knob">
+                    <div class="knob" onclick="rotateKnob(this, 3)">
                         <div class="knob-indicator"></div>
                     </div>
                     <div class="knob-label">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="knob-container">
-                    <div class="knob">
+                    <div class="knob" onclick="rotateKnob(this, 4)">
                         <div class="knob-indicator"></div>
                     </div>
                     <div class="knob-label">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="knob-container">
-                    <div class="knob">
+                    <div class="knob" onclick="rotateKnob(this, 5)">
                         <div class="knob-indicator"></div>
                     </div>
                     <div class="knob-label">
@@ -52,17 +52,39 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="display-screen">
-        <div class="default-display-content">
-            Welcome to my website!
-        </div>
-        <div class="display-content" id="1">
-        </div>
-        <div class="display-content" id="2">
-        </div>
-        <div class="display-content" id="3">
-        </div>
+        <div class="display-screen">
+                <div class="display-content active" id="0">
+                    Welcome to my website!
+                </div>
+                <div class="display-content" id="1">
+                    I'm Sam
+                </div>
+                <div class="display-content" id="2">
+                    I like turtles
+                </div>
+                <div class="display-content" id="3">
+                    SWE Engineer plsss
+                </div>
+            </div>
     </div>
 </body>
+<script>
+    const knobRotations = [0, 0, 0, 0, 0];
+
+    function rotateKnob(knob, i) {
+        const indicator = knob.querySelector('.knob-indicator');
+        knobRotations[i - 1] = (knobRotations[i-1] + 90 ) % 360;
+        indicator.style.transform = `translateX(-50%) rotate(${knobRotations[i - 1] + 225}deg)`;
+
+        if (i > 2) {
+            document.querySelectorAll('.display-content').forEach((d, j) => {
+                if (j == (i - 2)) {
+                    d.classList.add('active');
+                } else {
+                    d.classList.remove('active');
+                }
+            })
+        }
+    }
+</script>
 </html>

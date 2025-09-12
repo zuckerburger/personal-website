@@ -5,6 +5,10 @@ body {
     font-family: 'Courier New';
     background: linear-gradient(135deg, rgb(50, 4, 135), rgb(91, 14, 86));
     color: white;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    height: 100vh;
 }
 
 .amp-container {
@@ -13,13 +17,19 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 20px;
+    width: max-content;
+    border: solid black 6px;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.4),
+        inset 0 2px 4px rgba(255,255,255,0.1);
 }
 
 .amp-body {
     background: rgb(35, 4, 92);
     width: 800px;
     height: 200px;
-    border-radius: 20px;
+    border-radius: 14px 14px 0 0;
     box-shadow:
         0 20px 40px rgba(0,0,0,0.4),
         inset 0 2px 4px rgba(255,255,255,0.1);
@@ -37,9 +47,13 @@ body {
 }
 
 .display-screen {
-    margin-top: 50px;
     font-size: larger;
+    padding: 50px;
     text-align: center;
+    width: 100%;
+    height: 500px;
+    box-sizing: border-box;
+    background: radial-gradient(circle at 50% 50%, black , rgb(44, 44, 44))
 }
 
 .knob {
@@ -59,18 +73,27 @@ body {
 
  .knob-indicator {
     width: 4px;
-    height: 25px;
-    background: rgb(139, 136, 137);
+    height: 28px;
+    background: rgb(255, 255, 255);
     position: absolute;
     top: 8px;
     left: 50%;
     transform-origin: center bottom;
-    transform: translateX(-50%);
+    margin-left: -2px;
     border-radius: 2px;
+    transform: rotate(225deg);
     transition: transform 0.3s ease;
 }
 .knob-container {
     text-align: center;
     display: flex;
     flex-direction: column;
+}
+
+.display-content {
+    opacity: 0;
+}
+
+.display-content.active {
+    opacity: 1;
 }
