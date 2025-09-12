@@ -62,7 +62,7 @@
         </div>
         <div class="display-screen">
     <div class="display-content active" style="display:block" id="0">
-        <div class="title">Welcome to my website <br><br>
+        <div class="title">Welcome to my website!<br><br>
         (Use the guitar amp knobs to navigate)</div>
     </div>
 
@@ -73,7 +73,7 @@
         </div>
         <div class="sub-content">
             One of my favourite hobbies is playing electric guitar (who would've thought) and I've been playing for almost a decade.
-            My favourite guitarists are Gary Moore, John Mayer, and David Gilmour.
+            My favourite guitarists are Gary Moore, David Gilmour (Pink Floyd), and Lindsey Buckingham (Fleetwood Mac).
         </div>
         <div class="sub-content">
             My other hobbies include weightlifting, playing video games, bouldering,
@@ -83,7 +83,7 @@
 
     <div class="display-content" id="2">
         <div class="sub-content active">
-            ...coming soon
+            ...coming soon😭😭😭
         </div>
     </div>
 
@@ -109,25 +109,27 @@
 
     <div class="display-content" id="4">
         <div class="sub-content active">
-            If I were being completely honest with myself, my true dream would be to become a world famous guitarist.
-            That being said, software engineering is a close second.
+            If I were being completely honest with myself, my true dream is becoming a world famous guitarist.
+            But software engineering is a close second 😛
         </div>
         <div class="sub-content">
             My love for programming began at the age of 10, with Scratch.
-            Some of my friends were also messing around with it and having fun, but I was obsessed.
+            Some of my friends introduced it to me, and I was soon obsessed.
             After endless tutorials, and probably an unethical amount of plagiarism,
-            I managed to build a 2d platformer, 'Where's My Body'.
-            It wasn't exactly AAA standard, it was a stick figure head that rolled around,
-            but I managed to implement some pretty cool features like portals.
+            I managed to build a 2d platformer.
         </div>
         <div class="sub-content">
-            Once I was 14, I wanted to try something new, and build a game in Roblox. I felt completely lost.
+            At 14, I wanted to try something new and build a game in Roblox. I was completely lost.
+            <br>
             Gone were the days of dragging and dropping blocks, I had to write code in Lua now.
             It took me months of grinding, but I managed to build some really simple games.
-            The feeling of satisfaction after building a game and getting to play it with my friends was unparalleled.
-            For a moment, I was completely convinced this was something I wanted to do.
-            I went on to build more games over the following years, and by the time I was 16 I was a freelancer.
-            The pay was downright criminal, and a lot of people flaked, but it felt awesome to actually make money off my skills.
+            <br>
+            The feeling of satisfaction after making a game and getting to play it with my friends was unparalleled.
+            At this point I realised this could be a great career path.
+        </div>
+        <div class="sub-content">
+            I went on to build more games over the following years, and by the time I was 16 I was a "freelancer".
+            The pay was downright criminal, but it felt awesome to actually make money off my skills.
         </div>
         <div class="sub-content">
             When I got to uni it was a whole different ball game.
@@ -142,11 +144,13 @@
 </body>
 <script>
     const knobRotations = [0, 0, 0, 0, 0, 0];
+    const rotationSize = [90, 90, 90, 180, 90, 360/6]
+    const subcontentIndex = [0,0,0,0,0,0];
 
     function rotateKnob(knob, i) {
         const indicator = knob.querySelector('.knob-indicator');
-        knobRotations[i - 1] = (knobRotations[i-1] + 90 ) % 360;
-        indicator.style.transform = `translateX(-50%) rotate(${knobRotations[i - 1] + 225}deg)`;
+        knobRotations[i - 1] = (knobRotations[i-1] + rotationSize[i-1]) % 360;
+        indicator.style.transform = `rotate(${knobRotations[i - 1] + 225}deg)`;
 
         if (i > 2) {
             document.querySelectorAll('.display-content').forEach((d, j) => {
@@ -158,10 +162,22 @@
                     d.style.display = 'none';
                 }
             })
+            const section = document.getElementById(`${i - 2}`);
+            const subs = section.querySelectorAll('.sub-content');
+            console.log(`subs is ${JSON.toString(subs)}, i is ${i}, subcontent index is ${subcontentIndex.toString()}`);
+            subs.forEach((sub, j) => {
+                if (j != subcontentIndex[i-1]) {
+                    sub.classList.remove('active');
+                } else if (knobRotations[i-1] != 0) {
+                    sub.classList.add('active');
+                }
+            });
+
+            if (knobRotations[i-1] != 0) {
+            subcontentIndex[i-1] = (subcontentIndex[i-1] + 1) % subs.length;
+            }
         }
 
-        const section = document.getElementById(sectionId);
-        const subs = section.querySelectorAll('.sub-content');
     }
 </script>
 </html>

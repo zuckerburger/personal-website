@@ -50,6 +50,9 @@ body {
 }
 
 .display-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: larger;
     padding: 50px;
     text-align: center;
@@ -103,7 +106,6 @@ body {
     font-size: 30px;
     font-weight:600;
     opacity: 0;
-    transition: opacity 0.3s ease;
     display: none;
 }
 
@@ -114,4 +116,13 @@ body {
 
 .display-content.active {
     opacity: 1;
+}
+
+.sub-content.active {
+    display: block;
+    opacity: 1;
+}
+.sub-content {
+    opacity: 0;
+    display: none;
 }
