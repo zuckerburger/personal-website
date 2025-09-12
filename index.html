@@ -39,11 +39,19 @@
                         <div class="knob-indicator"></div>
                     </div>
                     <div class="knob-label">
-                        PROJECTS
+                        EXPERIENCE
                     </div>
                 </div>
                 <div class="knob-container">
                     <div class="knob" onclick="rotateKnob(this, 5)">
+                        <div class="knob-indicator"></div>
+                    </div>
+                    <div class="knob-label">
+                        PROJECTS
+                    </div>
+                </div>
+                <div class="knob-container">
+                    <div class="knob" onclick="rotateKnob(this, 6)">
                         <div class="knob-indicator"></div>
                     </div>
                     <div class="knob-label">
@@ -53,23 +61,87 @@
             </div>
         </div>
         <div class="display-screen">
-                <div class="display-content active" id="0">
-                    Welcome to my website!
-                </div>
-                <div class="display-content" id="1">
-                    I'm Sam
-                </div>
-                <div class="display-content" id="2">
-                    I like turtles
-                </div>
-                <div class="display-content" id="3">
-                    SWE Engineer plsss
-                </div>
-            </div>
+    <div class="display-content active" style="display:block" id="0">
+        <div class="title">Welcome to my website <br><br>
+        (Use the guitar amp knobs to navigate)</div>
+    </div>
+
+    <div class="display-content" id="1">
+        <div class="sub-content active">
+            Hey, I'm Sam! <br><br>
+            I'm a second year student at UNSW, studying compsci, and aspiring software engineer.
+        </div>
+        <div class="sub-content">
+            One of my favourite hobbies is playing electric guitar (who would've thought) and I've been playing for almost a decade.
+            My favourite guitarists are Gary Moore, John Mayer, and David Gilmour.
+        </div>
+        <div class="sub-content">
+            My other hobbies include weightlifting, playing video games, bouldering,
+            and of course trying to build cool projects.
+        </div>
+    </div>
+
+    <div class="display-content" id="2">
+        <div class="sub-content active">
+            ...coming soon
+        </div>
+    </div>
+
+    <div class="display-content" id="3">
+        <div class="sub-content active">
+            My personal portfolio started with The Odin Project, where I learned how to build a lot of basic full-stack web apps.
+            Calculators, to do lists, message boards, etc. Combined with 1531, I learned how to build basic frontends, deploy backends,
+            connect databases, and I got the confidence to start projects on my own.
+        </div>
+        <div class="sub-content">
+            Web-Plate was the first full-stack app that I built from scratch. Inspired by the software I use at the restaurant I work at,
+            I designed a web app that lets users customise menus, create orders, and view sales summaries.
+            I used Express, EJS, PostgreSQL, and Render.
+        </div>
+        <div class="sub-content">
+            Orchid was a full-stack app that I helped develop for the DevSoc Game Jam.
+            Thanks to the Odin Project and Web-Plate, I was the most experienced at developing web apps in our group,
+            so I helped lead most of the development, and assisted with both the frontend and backend.
+            Orchid was a multiplayer flashcard game to help students study, complete with leaderboards, streaks, and badges.
+            We were very happy to achieve 2nd place, considering that we had only met 2 days prior.
+        </div>
+    </div>
+
+    <div class="display-content" id="4">
+        <div class="sub-content active">
+            If I were being completely honest with myself, my true dream would be to become a world famous guitarist.
+            That being said, software engineering is a close second.
+        </div>
+        <div class="sub-content">
+            My love for programming began at the age of 10, with Scratch.
+            Some of my friends were also messing around with it and having fun, but I was obsessed.
+            After endless tutorials, and probably an unethical amount of plagiarism,
+            I managed to build a 2d platformer, 'Where's My Body'.
+            It wasn't exactly AAA standard, it was a stick figure head that rolled around,
+            but I managed to implement some pretty cool features like portals.
+        </div>
+        <div class="sub-content">
+            Once I was 14, I wanted to try something new, and build a game in Roblox. I felt completely lost.
+            Gone were the days of dragging and dropping blocks, I had to write code in Lua now.
+            It took me months of grinding, but I managed to build some really simple games.
+            The feeling of satisfaction after building a game and getting to play it with my friends was unparalleled.
+            For a moment, I was completely convinced this was something I wanted to do.
+            I went on to build more games over the following years, and by the time I was 16 I was a freelancer.
+            The pay was downright criminal, and a lot of people flaked, but it felt awesome to actually make money off my skills.
+        </div>
+        <div class="sub-content">
+            When I got to uni it was a whole different ball game.
+            I expected to cruise through comp1511 from all my previous experience.
+            But I soon realised how little I understood about how you're actually meant to code.
+            That being said, I've really enjoyed every step,
+            and it's been awesome to work on so many different technologies.
+        </div>
+    </div>
+</div>
     </div>
 </body>
 <script>
-    const knobRotations = [0, 0, 0, 0, 0];
+    const knobRotations = [0, 0, 0, 0, 0, 0];
 
     function rotateKnob(knob, i) {
         const indicator = knob.querySelector('.knob-indicator');
@@ -80,11 +152,16 @@
             document.querySelectorAll('.display-content').forEach((d, j) => {
                 if (j == (i - 2)) {
                     d.classList.add('active');
+                    d.style.display = 'block';
                 } else {
                     d.classList.remove('active');
+                    d.style.display = 'none';
                 }
             })
         }
+
+        const section = document.getElementById(sectionId);
+        const subs = section.querySelectorAll('.sub-content');
     }
 </script>
 </html>
